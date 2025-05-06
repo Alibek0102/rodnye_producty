@@ -3,6 +3,7 @@ services:
     build: .
     container_name: rodnye_producty_backend
     command: node index.js
+    restart: always
     ports: 
       - "3000:3000"
     networks:
@@ -10,9 +11,25 @@ services:
     volumes:
       - backend_data:/application
 
+  mariadb:
+    image: mariadb:latest
+    container_name: rb_db
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: rodnye_producty
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: rpdb
+    networks: 
+      - rp_network
+    volumes:
+      - database_data:/var/lib/mysql
+
 networks:
   rp_network:
     driver: bridge
 
 volumes:
   backend_data:
+  database_data:
