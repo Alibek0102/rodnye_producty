@@ -26,6 +26,15 @@ services:
     volumes:
       - database_data:/var/lib/mysql
 
+  adminer:
+    image: adminer
+    container_name: rp_adminer_container
+    restart: always
+    environment:
+      ADMINER_DESIGN: hever
+    ports:
+      - "8080:8080"
+
 networks:
   rp_network:
     driver: bridge
