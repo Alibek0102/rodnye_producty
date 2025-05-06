@@ -19,6 +19,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_USER: rodnye_producty
+      MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: rpdb
     networks: 
