@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: .
+    container_name: rodnye_producty_backend
+    command: node index.js
+    ports: 
+      - "3000:3000"
+    networks:
+      - rp_network
+    volumes:
+      - backend_data:/application
+
+networks:
+  rp_network:
+    driver: bridge
+
+volumes:
+  backend_data:
